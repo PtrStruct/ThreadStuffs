@@ -10,7 +10,10 @@ using System.Windows;
 
 namespace ThreadStuffs
 {
-    class MainViewModel : ObservableObject
+
+  using System.Windows.Threading;
+
+  class MainViewModel : ObservableObject
     {
         public ObservableCollection<string> Customers { get; set; }
         public RelayCommand StartAddingCommand { get; set; }
@@ -42,7 +45,7 @@ namespace ThreadStuffs
                         Application.Current.Dispatcher.Invoke(() =>
                         {
                             Customers.Add(VARIABLE.ToString());
-                        });
+                        }, DispatcherPriority.Background);
                     }
                 }
                 catch (Exception eh)
