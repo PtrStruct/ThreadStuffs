@@ -37,7 +37,7 @@ namespace ThreadStuffs
             {
                 try
                 {
-                    foreach (var VARIABLE in GetHTML("https://pastebin.com/raw/gG540TEj"))
+                    foreach (var VARIABLE in GetHTML("https://pastebin.com/raw/4N8MTwiP"))
                     {
                         Application.Current.Dispatcher.Invoke(() =>
                         {
