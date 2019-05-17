@@ -6,35 +6,35 @@
         xmlns:local="clr-namespace:ThreadStuffs"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Window.DataContext>
-        <local:MainViewModel/>
-    </Window.DataContext>
+  <Window.DataContext>
+    <local:MainViewModel />
+  </Window.DataContext>
 
-    <Grid>
-        <StackPanel>
-            <DataGrid ItemsSource="{Binding Customers, IsAsync=True}" AutoGenerateColumns="False" 
-                      Width="300" Height="200">
-                <DataGrid.Columns>
-                    <DataGridTemplateColumn Header="Image" Width="SizeToCells" IsReadOnly="True">
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding }" />
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
-                </DataGrid.Columns>
-            </DataGrid>
-            <Button Width="100"
-                    Height="25"
-                    Content="Start"
-                    Command="{Binding StartAddingCommand}"/>
-        </StackPanel>
-        
-        <Border VerticalAlignment="Bottom"
-                Height="25" Background="Orange">
-            <TextBlock Text="{Binding Customers.Count}"
-                       HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        </Border>
-    </Grid>
+  <DockPanel>
+
+    <StackPanel DockPanel.Dock="Bottom">
+      <Button Width="100" Height="25" Content="Start" Command="{Binding StartAddingCommand}" />
+      <Border VerticalAlignment="Bottom" Height="25" Background="Orange">
+        <TextBlock Text="{Binding Customers.Count}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+      </Border>
+    </StackPanel>
+
+    <DataGrid
+      AutoGenerateColumns="False"
+      EnableRowVirtualization="True"
+      ItemsSource="{Binding Customers, IsAsync=True}"
+      VirtualizingStackPanel.IsVirtualizing="True">
+      <DataGrid.Columns>
+        <DataGridTemplateColumn Header="Image" Width="SizeToCells" IsReadOnly="True">
+          <DataGridTemplateColumn.CellTemplate>
+            <DataTemplate>
+              <TextBlock Text="{Binding }" />
+            </DataTemplate>
+          </DataGridTemplateColumn.CellTemplate>
+        </DataGridTemplateColumn>
+      </DataGrid.Columns>
+    </DataGrid>
+
+  </DockPanel>
+
 </Window>
- 
